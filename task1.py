@@ -6,7 +6,7 @@ from typing import Optional
 # Уровень 1
 # Преобразовывем CSV-строку в список словарей пропуская пустые строки
 def parse_csv(data: str) -> list[dict]:
-    return list(csv.DictReader(io.StringIO(data)))
+    return list(csv.DictReader(data.splitlines()))
 
 
 # Уровень 2
@@ -28,12 +28,12 @@ def top_item(rows: list[dict]) -> Optional[dict]:
 
 
 # ------------ tests ------------
-# def run_tests() -> None:
-#     data = """id,category,name,date,price,quantity
-# 1,Электротехника,Телевизор,2021-05-15,15000,3
-# 2,Электротехника,Холодильник,2021-06-20,25000,2
-# """
-#     print(parse_csv(data))
-#     print(compute_revenue(parse_csv(data)))
-#     print(top_item(parse_csv(data)))
-# run_tests()
+def run_tests() -> None:
+    data = """id,category,name,date,price,quantity
+1,Электротехника,Телевизор,2021-05-15,15000,3
+2,Электротехника,Холодильник,2021-06-20,25000,2
+"""
+    print(parse_csv(data))
+    print(compute_revenue(parse_csv(data)))
+    print(top_item(parse_csv(data)))
+run_tests()
