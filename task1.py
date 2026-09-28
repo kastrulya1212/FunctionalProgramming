@@ -1,6 +1,7 @@
 import csv
 import io
 from typing import Optional
+from operator import itemgetter, mul
 
 
 # Уровень 1
@@ -12,7 +13,11 @@ def parse_csv(data: str) -> list[dict]:
 # Уровень 2
 # Вычисляем сумму quantity * price для всех строк
 def compute_revenue(rows: list[dict]) -> float:
-    return sum(float(row["quantity"]) * float(row["price"]) for row in rows)
+    return sum(map(
+        mul,
+        map(float, map(itemgetter("quantity"), rows)),
+        map(float, map(itemgetter("price"), rows))
+    ))
 
 
 # Уровень 3
@@ -28,12 +33,12 @@ def top_item(rows: list[dict]) -> Optional[dict]:
 
 
 # ------------ tests ------------
-def run_tests() -> None:
-    data = """id,category,name,date,price,quantity
-1,Электротехника,Телевизор,2021-05-15,15000,3
-2,Электротехника,Холодильник,2021-06-20,25000,2
-"""
-    print(parse_csv(data))
-    print(compute_revenue(parse_csv(data)))
-    print(top_item(parse_csv(data)))
-run_tests()
+# def run_tests() -> None:
+#     data = """id,category,name,date,price,quantity
+# 1,Электротехника,Телевизор,2021-05-15,15000,3
+# 2,Электротехника,Холодильник,2021-06-20,25000,2
+# """
+#     print(parse_csv(data))
+#     print(compute_revenue(parse_csv(data)))
+#     print(top_item(parse_csv(data)))
+# run_tests()
