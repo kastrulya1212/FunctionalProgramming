@@ -35,4 +35,4 @@ class Failure(Generic[E]):
 Result = Union[Success[T], Failure[E]]
 
 def load_users(users: list[User]) -> Result[list[User], str]:
-    return Success(users) if users else Failure("Пустой список!")
+    return Success(users) if users else Failure("Пустой список")
