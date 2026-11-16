@@ -44,4 +44,4 @@ GET_AVERAGE = lambda students: (
 )
 
 # ДЛЯ ТЕСТА
-print("Уровень 3: " + f'{GET_AVERAGE(STUDENTS)}')
+print("уровень 3: " + f'{GET_AVERAGE(STUDENTS)}')
