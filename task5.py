@@ -10,35 +10,38 @@ STUDENTS = [
 
 # Уровень 1
 #f1 = lambda elem: f'Имя: {elem["name"]}, Оценка: {elem["grade"]}'
-# strings = map(
-#     lambda elem: f'Имя: {elem["name"]}, Оценка: {elem["grade"]}',
-#     STUDENTS
-# )
-def get_strings(students: list[dict]):
-    return map(
+GET_STRINGS = lambda students: tuple(
+    map(
         lambda elem: f'Имя: {elem["name"]}, Оценка: {elem["grade"]}',
         students
     )
+)
 
-print(list(get_strings(STUDENTS)))
+# ДЛЯ ТЕСТА
+for i in GET_STRINGS(STUDENTS):
+    print("Уровень 1: " + i)
+
 
 # Уровень 2
-# best_students = filter(
-#     lambda elem: elem["grade"] > 4,
-#     STUDENTS
-# )
-def get_best_students(students: list[dict]):
-    return filter(
-        lambda elem: elem["grade"] > 4,
+GET_BEST_STUDENTS = lambda students: tuple(
+    filter(
+        lambda elem: elem["grade"] > 4.0,
         students
     )
+)
 
-print(list(get_best_students(STUDENTS)))
+# ДЛЯ ТЕСТА
+for i in GET_BEST_STUDENTS(STUDENTS):
+    print("Уровень 2: " + f'{i}')
+
 
 # Уровень 3
-# sum = reduce(lambda acc,x: acc+x, map(lambda elem: elem["age"], STUDENTS))
-# avg_age = sum / len(STUDENTS)
-def average_age(students: list[dict]):
-    return reduce(lambda acc,x: acc+x, map(lambda elem: elem["age"], students)) / len(students)
+GET_AVERAGE = lambda students: (
+    reduce(
+        lambda acc,x: acc+x, map(lambda elem: elem["age"], 
+        students)
+    ) / len(students)
+)
 
-print(average_age(STUDENTS))
+# ДЛЯ ТЕСТА
+print("Уровень 3: " + f'{GET_AVERAGE(STUDENTS)}')
