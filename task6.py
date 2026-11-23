@@ -49,7 +49,7 @@ GET_ORDER_BY_ID = lambda orders: lambda order_id: OptionalBox(
 )
 
 
-### ТЕСТЫ
+#### ТЕСТЫ
 # Тест уровня 1
 print(GET_TOTALS(ORDERS))
 
