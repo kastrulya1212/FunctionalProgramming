@@ -15,13 +15,12 @@ ORDERS = (
 
 
 # Уровень 1 
-# Извлекаем список сумм закозов при помощи map
-GET_TOTALS = lambda orders: tuple(
-    map(
-        lambda order: order["total"],
-        orders
-    )
+# Извлекаем список сумм заказов при помощи map
+GET_TOTALS = lambda orders: map(
+    lambda order: order["total"],
+    orders
 )
+
 
 # Уровень 2
 # Создали тип обертку, который может содержать значение типа T или None. 
