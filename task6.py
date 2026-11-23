@@ -38,7 +38,7 @@ class OptionalBox(Generic[T]):
 
 # Уровень 3
 # Безопасно извлекаем заказ по его идентификатору, возвращая OptionalBox с найденным заказом или None, если заказ не найден
-GET_ORDER_BY_ID = lambda order_id: lambda orders: OptionalBox(
+GET_ORDER_BY_ID = lambda orders: lambda order_id: OptionalBox(
     next(
         filter(
             lambda order: order["id"] == order_id,
@@ -56,11 +56,11 @@ print(GET_TOTALS(ORDERS))
 
 # Тест уровня 3 - заказ существует
 print(
-    GET_ORDER_BY_ID(2)(ORDERS)
+    GET_ORDER_BY_ID(ORDERS)(2)
 )
 
 
 # Тест уровня 3 - заказа нет
 print(
-    GET_ORDER_BY_ID(100)(ORDERS)
+    GET_ORDER_BY_ID(ORDERS)(100)
 )
